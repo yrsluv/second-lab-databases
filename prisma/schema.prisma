@@ -1,0 +1,103 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Observation {
+  id               Int       @id @default(autoincrement())
+  title            String    @db.VarChar(255)
+  date             DateTime  
+  description      String    @db.Text
+  event            Event?    @relation(fields: [eventId], references: [id])
+  eventId          Int?
+  observatory      Observatory @relation(fields: [observatoryId], references: [id])
+  observatoryId    Int
+  astronomer      Astronomer?  @relation(fields: [astronomerId], references: [id])
+  astronomerId    Int?
+
+  @@map("Observations")
+}
+
+model Astronomer {
+  id           Int       @id @default(autoincrement())
+  name         String    @db.VarChar(255)
+  birthday     DateTime  
+  biography    String    @db.Text
+  country      Country   @relation(fields: [countryId], references: [id])
+  countryId    Int
+  observations Observation[]
+
+  @@map("Astronomers")
+}
+
+model Observatory {
+  id                    Int        @id @default(autoincrement())
+  name                  String     @db.VarChar(50)
+  description           String     @db.Text
+  latitude              Float      
+  longitude             Float      
+  country               Country    @relation(fields: [countryId], references: [id])
+  countryId             Int
+  openDate              DateTime   
+  workersAmount         Int
+  observations          Observation[]
+
+
+  @@map("Observatories")
+}
+
+model Event {
+  id                    Int             @id @default(autoincrement())
+  name                  String          @db.VarChar(50)
+  description           String          @db.Text
+  latitude              Float           
+  longitude             Float           
+  coordinatesSystem     CoordinateSystem @relation(fields: [coordinatesSystemId], references: [id])
+  coordinatesSystemId   Int
+  date                  DateTime        
+  body                  CelestialBody   @relation(fields: [bodyId], references: [id])
+  bodyId                Int
+  observations          Observation[]
+
+
+  @@map("Events")
+}
+
+model CelestialBody {
+  id                    Int             @id @default(autoincrement())
+  code                  String          @db.VarChar(50)
+  value                 String          @db.VarChar(50)
+  description           String          @db.Text
+  mass                  Float             
+  radius                Int             
+  distanceFromEarth     Float             
+  events                Event[]
+
+  @@map("CelestialBodies")
+}
+
+model Country {
+  id                    Int             @id @default(autoincrement())
+  code                  String          @db.VarChar(2)
+  value                 String          @db.VarChar(50)
+  observatories         Observatory[]
+  astronomers           Astronomer[]
+}
+
+
+model CoordinateSystem {
+  id                    Int             @id @default(autoincrement())
+  code                  String          @db.VarChar(10)
+  value                 String          @db.VarChar(50)
+  events                Event[]
+}

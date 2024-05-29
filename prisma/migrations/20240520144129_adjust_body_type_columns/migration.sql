@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "BodyType" ALTER COLUMN "code" SET DATA TYPE VARCHAR(50);
