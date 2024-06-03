@@ -10,26 +10,24 @@ export async function GET(req, res) {
         country: true,
         name: true,
         observations: true
-       
       },
     });
-    console.log(statistics)
 
     const observatoryStatistics = statistics
-                                            .filter(obs => obs.observations.length)
-                                            .map(obs => ({
-                                              Страна: obs.country.value,
-                                              Обсерватория: obs.name,
-                                              Год: new Date(obs.observations[0].date).getFullYear(),
-                                              События: obs.observations.length,
-                                            }
-                                          ));
+      .map(obs => ({
+        Страна: obs.country.value,
+        Обсерватория: obs.name,
+        Год: obs.observations.length ? new Date(obs.observations[0].date).getFullYear() : 2024,
+        События: obs.observations.length ? obs.observations?.length : 0,
+      }
+      ))
+      .sort((a, b) => (b.События - a.События))
 
     return NextResponse.json({
       success: true,
       data: observatoryStatistics,
     })
-;
+      ;
   } catch (error) {
     console.log(error)
     return NextResponse.json({
