@@ -255,7 +255,7 @@ export default function Observations() {
                   mode="single"
                   selected={date}
                   onSelect={setDate}
-                  initialFocus
+
                 />
               </PopoverContent>
             </Popover>

@@ -226,7 +226,7 @@ export const ObservatoryModal = () => {
                                 mode="single"
                                 selected={date}
                                 onSelect={setDate}
-                                initialFocus
+
                             />
                         </PopoverContent>
                     </Popover>

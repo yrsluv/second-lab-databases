@@ -5,33 +5,22 @@ const prisma = new PrismaClient();
 
 export async function GET(req, res) {
   const { searchParams } = new URL(req.url)
-  const min = searchParams.get('min')
-  const max = searchParams.get('max')
+  const countryId = searchParams.get('country')
   try {
-    const workers = await prisma.observatory.findMany({
+    const observations = await prisma.observation.findMany({
       where: {
-        workersAmount: {
-          gte: +min,
-          lte: +max,
+        astronomer: {
+          countryId: parseInt(countryId, 10)
         }
       },
       select: {
-        country: true,
-        name: true,
-        description: true,
-        latitude: true,
-        longitude: true,
-        openDate: true,
-        workersAmount: true,
+        date: true
       }
     });
-    //console.log(workers)
-
-
-
+    const years = [...new Set(observations.map(obs => new Date(obs.date).getFullYear()))];
     return NextResponse.json({
       success: true,
-      data: workers,
+      data: years,
     });
   } catch (error) {
     console.log(error)

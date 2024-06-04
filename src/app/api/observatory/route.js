@@ -10,7 +10,7 @@ export async function GET(req, res) {
 
     return NextResponse.json({
       success: true,
-      data: observatories,
+      data: observatories.sort((a, b) => a.name.localeCompare(b.name)),
     })
       ;
   } catch (error) {

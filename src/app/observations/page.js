@@ -33,19 +33,7 @@ import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
 const schema = z.object({
-  year: z.string()
-    .transform((year) => parseInt(year))
-    .superRefine((year, ctx) => {
-      if (isNaN(year)) {
-        ctx.addIssue({
-          code: z.ZodIssueCode.custom,
-          message: "Похоже, что введен неподходящий год",
-        });
-      }
-    })
-    .pipe(z.number().min(1900, "Похоже, что введен неподходящий год"))
-    .pipe(z.number().max(2024, "Похоже, что введен неподходящий год"))
-    .transform((year) => year.toString()),
+
 });
 export default function Observations() {
   const [statistics, setStatistics] = useState(null);
@@ -54,13 +42,12 @@ export default function Observations() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [countryError, setCountryError] = useState(false)
+  const [pickedYear, setPickerYear] = useState(null)
+  const [years, setYears] = useState(null)
 
   const form = useForm({
     resolver: zodResolver(schema),
-    defaultValues: {
-      year: "",
-      country: null
-    },
+
   })
 
   function onSubmit(values) {
@@ -68,13 +55,13 @@ export default function Observations() {
   }
 
   async function fetchObservations(year) {
-    if (!pickedCountry) {
+    if (!pickedCountry || !pickedYear) {
       setCountryError(true)
       return;
     }
     setCountryError(false)
     try {
-      const response = await fetch(`/api/observations?country=${pickedCountry}&year=${year}`);
+      const response = await fetch(`/api/observations?country=${pickedCountry}&year=${pickedYear}`);
       if (!response.ok) {
         throw new Error('Произошла непредвиденная ошибка');
       }
@@ -102,6 +89,21 @@ export default function Observations() {
     }
   }
 
+  async function fetchYears() {
+    try {
+      const response = await fetch(`/api/years?country=${pickedCountry}`);
+      if (!response.ok) {
+        throw new Error('Произошла непредвиденная ошибка');
+      }
+      const data = await response.json();
+      setYears(data.data);
+      setLoading(false);
+    } catch (error) {
+      setError('Произошла непредвиденная ошибка');
+      setLoading(false);
+    }
+  }
+
 
 
 
@@ -114,6 +116,12 @@ export default function Observations() {
   }
 
   useEffect(() => {
+    setPickerYear(null);
+    setYears(null);
+    fetchYears();
+  }, [pickedCountry])
+
+  useEffect(() => {
     fetchCountries();
   }, [])
 
@@ -124,27 +132,12 @@ export default function Observations() {
 
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 flex flex-col items-center">
-          <FormField
-            control={form.control}
-            name="year"
-            render={({ field }) => (
-              <FormItem>
-                <p className="leading-7 mb-6">
-                  Введите желаемое значение года наблюдения для поиска:
-                </p>
-                <FormControl>
-                  <Input className='w-full' type="text" placeholder="Год наблюдений" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
           {
             !countries ? <p className="leading-7 mb-6">
               Загрузка
             </p> : (<DropdownMenu modal={false}>
               <DropdownMenuTrigger asChild>
-                <Button variant="outline">{!pickedCountry ? "Выберите страну" : `${countries.find(country => country.id == pickedCountry)?.value}`}</Button>
+                <Button className="w-56" variant="outline">{!pickedCountry ? "Выберите страну" : `${countries.find(country => country.id == pickedCountry)?.value}`}</Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent className="w-56">
                 <DropdownMenuLabel>Список стран</DropdownMenuLabel>
@@ -164,6 +157,32 @@ export default function Observations() {
 
             </DropdownMenu>)
           }
+          {
+            !years || !years.length ? <p className="leading-7 mb-6">
+              Нет доступных лет
+            </p> : (<DropdownMenu modal={false}>
+              <DropdownMenuTrigger asChild>
+                <Button className="w-56" variant="outline">{!pickedYear ? "Выберите год" : `${pickedYear}`}</Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-56">
+                <DropdownMenuLabel>Список доступных лет</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuRadioGroup value={pickedYear} onValueChange={setPickerYear}>
+
+                  <div className="flex flex-col h-64 overflow-y-scroll">
+                    {
+                      years.map(year =>
+                        <DropdownMenuRadioItem value={year}>{year} </DropdownMenuRadioItem>
+
+                      )
+                    }
+                  </div>
+                </DropdownMenuRadioGroup>
+              </DropdownMenuContent>
+
+            </DropdownMenu>)
+          }
+
 
 
 

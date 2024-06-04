@@ -7,12 +7,18 @@ export async function GET(req, res) {
   const { searchParams } = new URL(req.url)
   const country = searchParams.get('country')
   const year = searchParams.get('year')
+  const startDate = new Date(year, 0, 1);
+  const endDate = new Date(year, 11, 31, 23, 59, 59);
   try {
     const observations = await prisma.observation.findMany({
       where: {
-        date: {
-          gte: new Date(year, 1, 1).toISOString()
+        astronomer: {
+          countryId: parseInt(country, 10)
         },
+        date: {
+          gte: startDate,
+          lte: endDate
+        }
       },
       select: {
         title: true,
@@ -30,6 +36,7 @@ export async function GET(req, res) {
     return NextResponse.json({
       success: true,
       data: observations.filter(observation => observation.astronomer.countryId == country),
+      //data: observations.filter(observation => observation.astronomer.countryId == country),
     })
       ;
   } catch (error) {

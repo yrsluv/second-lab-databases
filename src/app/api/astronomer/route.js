@@ -11,7 +11,7 @@ export async function GET(req, res) {
 
     return NextResponse.json({
       success: true,
-      data: astronomers,
+      data: astronomers.sort((a, b) => a.name.localeCompare(b.name)),
     })
       ;
   } catch (error) {
