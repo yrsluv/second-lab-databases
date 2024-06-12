@@ -43,7 +43,21 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { Autocomplete, TextField } from '@mui/material';
 
+
+const titles = [
+  'Наблюдение за звездами',
+  'Метеоритный дождь',
+  'Планетарное выравнивание',
+  'Солнечное затмение',
+  'Лунное затмение',
+  'Наблюдение за кометой',
+  'Наблюдение за галактикой',
+  'Наблюдение за туманностью',
+  'Наблюдение за астероидом',
+  'Наблюдение за спутником',
+]
 
 const schema = z.object({
   title: z.string(),
@@ -61,6 +75,8 @@ export default function Observations() {
 
   const [pickedAstronomer, setPickedAstronomer] = useState(null)
   const [pickedObservatory, setPickedObservatory] = useState(null)
+  const [selectedTitle, setSelectedTitle] = useState('');
+
 
 
   const form = useForm({
@@ -199,7 +215,31 @@ export default function Observations() {
         }
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 mt-10 flex flex-col items-center">
           <h3>Добавление наблюдения:</h3>
-          <FormField
+          <p className="leading-7 mb-6">
+            Введите название наблюдения:
+          </p>
+          <Autocomplete
+            className="w-72 text-slate-100"
+            freeSolo
+            autoFocus={true}
+            options={titles}
+            value={selectedTitle}
+            onChange={(event, newValue) => {
+              if (newValue && !titles.some((title) => title === newValue)) {
+                handleAddTitle(newValue);
+              } else {
+                setSelectedTitle(newValue);
+              }
+            }}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                label="Название наблюдения"
+                variant="outlined"
+              />
+            )}
+          />
+          {/* <FormField
             control={form.control}
             name="title"
             render={({ field }) => (
@@ -213,7 +253,7 @@ export default function Observations() {
                 <FormMessage />
               </FormItem>
             )}
-          />
+          /> */}
           <FormField
             control={form.control}
             name="description"

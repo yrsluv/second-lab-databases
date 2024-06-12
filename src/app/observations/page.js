@@ -76,7 +76,7 @@ export default function Observations() {
 
   async function fetchCountries() {
     try {
-      const response = await fetch('/api/countries');
+      const response = await fetch('/api/sync_countries');
       if (!response.ok) {
         throw new Error('Произошла непредвиденная ошибка');
       }

@@ -61,3 +61,27 @@
       @apply bg-background text-foreground;
     }
   }
+
+  .MuiAutocomplete-input{
+    color: white;
+  }
+
+
+  .MuiInputLabel-root{
+    color: white;
+  }
+
+  .MuiAutocomplete-clearIndicator{
+    background-color: white;
+
+
+  }
+
+  .MuiAutocomplete-clearIndicator:hover{
+    background-color: white;
+  }
+
+  
+  .MuiOutlinedInput-root{
+    border: 1px solid hsl(var(--input));
+  }
