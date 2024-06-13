@@ -60,7 +60,6 @@ const titles = [
 ]
 
 const schema = z.object({
-  title: z.string(),
   description: z.string(),
 });
 
@@ -89,7 +88,9 @@ export default function Observations() {
 
 
   async function onSubmit(values) {
-    if (!date || !pickedAstronomer || !pickedObservatory) return;
+    console.log(selectedTitle)
+    if (!date || !pickedAstronomer || !pickedObservatory || !selectedTitle) return;
+
     try {
       console.log(1)
       const resp = await fetch('/api/observations', {
@@ -98,7 +99,7 @@ export default function Observations() {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          title: values.title,
+          title: selectedTitle,
           description: values.description,
           observatory: pickedObservatory,
           astronomer: pickedAstronomer,
@@ -111,6 +112,10 @@ export default function Observations() {
       }
       const data = await resp.json();
       setSuccess(data.success);
+      setPickedAstronomer(null)
+      setPickedObservatory(null)
+      setSelectedTitle(null)
+      setDate(null)
       setTimeout(() => {
         setSuccess(false);
       }, 3000);
@@ -220,13 +225,12 @@ export default function Observations() {
           </p>
           <Autocomplete
             className="w-72 text-slate-100"
-            freeSolo
-            autoFocus={true}
             options={titles}
             value={selectedTitle}
-            onChange={(event, newValue) => {
+            onInputChange={(event, newValue) => {
+              console.log(newValue)
               if (newValue && !titles.some((title) => title === newValue)) {
-                handleAddTitle(newValue);
+                setSelectedTitle(newValue);
               } else {
                 setSelectedTitle(newValue);
               }
