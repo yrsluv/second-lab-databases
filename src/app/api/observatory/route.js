@@ -7,10 +7,21 @@ export async function GET(req, res) {
   try {
     const observatories = await prisma.observatory.findMany();
 
+    const filterUniqueNames = (observatories) => {
+      const seenNames = new Map();
+      return observatories.filter(observatory => {
+        if (!seenNames.has(observatory.name)) {
+          seenNames.set(observatory.name, true);
+          return true;
+        }
+        return false;
+      });
+    };
+
 
     return NextResponse.json({
       success: true,
-      data: observatories.sort((a, b) => a.name.localeCompare(b.name)),
+      data: filterUniqueNames(observatories).sort((a, b) => a.name.localeCompare(b.name)),
     })
       ;
   } catch (error) {

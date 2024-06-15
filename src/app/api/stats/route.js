@@ -13,7 +13,18 @@ export async function GET(req, res) {
       },
     });
 
-    const observatoryStatistics = statistics
+    const uniqueNames = new Set();
+    const uniqueStatistics = statistics.filter(item => {
+      if (uniqueNames.has(item.name)) {
+        return false;
+      } else {
+        uniqueNames.add(item.name);
+        return true;
+      }
+    });
+
+
+    const observatoryStatistics = uniqueStatistics
       .map(obs => ({
         Страна: obs.country.value,
         Обсерватория: obs.name,

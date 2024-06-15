@@ -6,11 +6,20 @@ const prisma = new PrismaClient();
 export async function GET(req, res) {
   try {
     const countries = await prisma.country.findMany();
-
+    const filterUniqueValues = (countries) => {
+      const seenValues = new Set();
+      return countries.filter(country => {
+        if (!seenValues.has(country.value)) {
+          seenValues.add(country.value);
+          return true;
+        }
+        return false;
+      });
+    };
 
     return NextResponse.json({
       success: true,
-      data: countries.sort((a, b) => a.value.localeCompare(b.value)),
+      data: filterUniqueValues(countries).sort((a, b) => a.value.localeCompare(b.value)),
     })
       ;
   } catch (error) {

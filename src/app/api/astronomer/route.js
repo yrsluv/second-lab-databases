@@ -7,11 +7,20 @@ const prisma = new PrismaClient();
 export async function GET(req, res) {
   try {
     const astronomers = await prisma.astronomer.findMany();
-
+    const filterUniqueNames = (astronomers) => {
+      const seenNames = new Set();
+      return astronomers.filter(astronomer => {
+        if (!seenNames.has(astronomer.name)) {
+          seenNames.add(astronomer.name);
+          return true;
+        }
+        return false;
+      });
+    };
 
     return NextResponse.json({
       success: true,
-      data: astronomers.sort((a, b) => a.name.localeCompare(b.name)),
+      data: filterUniqueNames(astronomers).sort((a, b) => a.name.localeCompare(b.name)),
     })
       ;
   } catch (error) {

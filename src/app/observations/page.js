@@ -142,7 +142,10 @@ export default function Observations() {
               <DropdownMenuContent className="w-56">
                 <DropdownMenuLabel>Список стран</DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                <DropdownMenuRadioGroup value={pickedCountry} onValueChange={setPickedCountry}>
+                <DropdownMenuRadioGroup value={pickedCountry} onValueChange={(val) => {
+                  setPickedCountry(val);
+                  setStatistics(null);
+                }}>
 
                   <div className="flex flex-col h-64 overflow-y-scroll">
                     {
@@ -167,7 +170,10 @@ export default function Observations() {
               <DropdownMenuContent className="w-56">
                 <DropdownMenuLabel>Список доступных лет</DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                <DropdownMenuRadioGroup value={pickedYear} onValueChange={setPickerYear}>
+                <DropdownMenuRadioGroup value={pickedYear} onValueChange={(val) => {
+                  setPickerYear(val);
+                  setStatistics(null);
+                }}>
 
                   <div className="flex flex-col h-64 overflow-y-scroll">
                     {
