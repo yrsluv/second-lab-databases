@@ -63,25 +63,25 @@
   }
 
   .MuiAutocomplete-input, .MuiOutlinedInput-input{
-    color: white;
+    color: white !important;
   }
 
 
   .MuiInputLabel-root{
-    color: white;
+    color: white !important;
   }
 
   .MuiAutocomplete-clearIndicator{
-    background-color: white;
+    background-color: white !important;
 
 
   }
 
   .MuiAutocomplete-clearIndicator:hover{
-    background-color: white;
+    background-color: white !important;
   }
 
   
   .MuiOutlinedInput-root{
-    border: 1px solid hsl(var(--input));
+    border: 1px solid hsl(var(--input)) !important;
   }
