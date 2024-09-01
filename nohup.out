@@ -1,0 +1,119 @@
+
+> 2@0.1.0 start
+> next start
+
+  ▲ Next.js 14.2.1
+  - Local:        http://localhost:3000
+
+ ✓ Starting...
+ ✓ Ready in 1226ms
+PrismaClientValidationError: 
+Invalid `prisma.observation.findMany()` invocation:
+
+{
+  where: {
+    astronomer: {
+      countryId: NaN,
+      ~~~~~~~~~
+?     is?: AstronomerWhereInput | Null,
+?     isNot?: AstronomerWhereInput | Null
+    }
+  },
+  select: {
+    date: true
+  }
+}
+
+Unknown argument `countryId`. Available options are marked with ?.
+    at Tn (/home/test/second-lab-databases/node_modules/@prisma/client/runtime/library.js:115:5888)
+    at In.handleRequestError (/home/test/second-lab-databases/node_modules/@prisma/client/runtime/library.js:122:6510)
+    at In.handleAndLogRequestError (/home/test/second-lab-databases/node_modules/@prisma/client/runtime/library.js:122:6188)
+    at In.request (/home/test/second-lab-databases/node_modules/@prisma/client/runtime/library.js:122:5896)
+    at async l (/home/test/second-lab-databases/node_modules/@prisma/client/runtime/library.js:127:11167)
+    at async d (/home/test/second-lab-databases/.next/server/app/api/years/route.js:1:679)
+    at async /home/test/second-lab-databases/node_modules/next/dist/compiled/next-server/app-route.runtime.prod.js:6:34801
+    at async eS.execute (/home/test/second-lab-databases/node_modules/next/dist/compiled/next-server/app-route.runtime.prod.js:6:25910)
+    at async eS.handle (/home/test/second-lab-databases/node_modules/next/dist/compiled/next-server/app-route.runtime.prod.js:6:36055)
+    at async doRender (/home/test/second-lab-databases/node_modules/next/dist/server/base-server.js:1372:42) {
+  clientVersion: '5.12.1'
+}
+
+> 2@0.1.0 start
+> next start
+
+  ▲ Next.js 14.2.1
+  - Local:        http://localhost:3000
+
+ ✓ Starting...
+ ✓ Ready in 996ms
+PrismaClientValidationError: 
+Invalid `prisma.observation.findMany()` invocation:
+
+{
+  where: {
+    astronomer: {
+      countryId: NaN,
+      ~~~~~~~~~
+?     is?: AstronomerWhereInput | Null,
+?     isNot?: AstronomerWhereInput | Null
+    }
+  },
+  select: {
+    date: true
+  }
+}
+
+Unknown argument `countryId`. Available options are marked with ?.
+    at Tn (/home/test/second-lab-databases/node_modules/@prisma/client/runtime/library.js:115:5888)
+    at In.handleRequestError (/home/test/second-lab-databases/node_modules/@prisma/client/runtime/library.js:122:6510)
+    at In.handleAndLogRequestError (/home/test/second-lab-databases/node_modules/@prisma/client/runtime/library.js:122:6188)
+    at In.request (/home/test/second-lab-databases/node_modules/@prisma/client/runtime/library.js:122:5896)
+    at async l (/home/test/second-lab-databases/node_modules/@prisma/client/runtime/library.js:127:11167)
+    at async d (/home/test/second-lab-databases/.next/server/app/api/years/route.js:1:679)
+    at async /home/test/second-lab-databases/node_modules/next/dist/compiled/next-server/app-route.runtime.prod.js:6:34801
+    at async eS.execute (/home/test/second-lab-databases/node_modules/next/dist/compiled/next-server/app-route.runtime.prod.js:6:25910)
+    at async eS.handle (/home/test/second-lab-databases/node_modules/next/dist/compiled/next-server/app-route.runtime.prod.js:6:36055)
+    at async doRender (/home/test/second-lab-databases/node_modules/next/dist/server/base-server.js:1372:42) {
+  clientVersion: '5.12.1'
+}
+
+> 2@0.1.0 start
+> next start
+
+  ▲ Next.js 14.2.1
+  - Local:        http://localhost:3000
+
+ ✓ Starting...
+ ✓ Ready in 896ms
+PrismaClientValidationError: 
+Invalid `prisma.observation.findMany()` invocation:
+
+{
+  where: {
+    astronomer: {
+      countryId: NaN,
+      ~~~~~~~~~
+?     is?: AstronomerWhereInput | Null,
+?     isNot?: AstronomerWhereInput | Null
+    }
+  },
+  select: {
+    date: true
+  }
+}
+
+Unknown argument `countryId`. Available options are marked with ?.
+    at Tn (/home/test/second-lab-databases/node_modules/@prisma/client/runtime/library.js:115:5888)
+    at In.handleRequestError (/home/test/second-lab-databases/node_modules/@prisma/client/runtime/library.js:122:6510)
+    at In.handleAndLogRequestError (/home/test/second-lab-databases/node_modules/@prisma/client/runtime/library.js:122:6188)
+    at In.request (/home/test/second-lab-databases/node_modules/@prisma/client/runtime/library.js:122:5896)
+    at async l (/home/test/second-lab-databases/node_modules/@prisma/client/runtime/library.js:127:11167)
+    at async d (/home/test/second-lab-databases/.next/server/app/api/years/route.js:1:679)
+    at async /home/test/second-lab-databases/node_modules/next/dist/compiled/next-server/app-route.runtime.prod.js:6:34801
+    at async eS.execute (/home/test/second-lab-databases/node_modules/next/dist/compiled/next-server/app-route.runtime.prod.js:6:25910)
+    at async eS.handle (/home/test/second-lab-databases/node_modules/next/dist/compiled/next-server/app-route.runtime.prod.js:6:36055)
+    at async doRender (/home/test/second-lab-databases/node_modules/next/dist/server/base-server.js:1372:42) {
+  clientVersion: '5.12.1'
+}
+ ⚠ For production Image Optimization with Next.js, the optional 'sharp' package is strongly recommended. Run 'npm i sharp', and Next.js will use it automatically for Image Optimization.
+Read more: https://nextjs.org/docs/messages/sharp-missing-in-production
