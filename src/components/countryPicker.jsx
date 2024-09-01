@@ -40,7 +40,7 @@ export const CountryPicker = ({ value, onValueChange }) => {
                     Загрузка
                 </p> : (<DropdownMenu modal={false}>
                     <DropdownMenuTrigger asChild>
-                        <Button variant="outline" className='w-full'>{!value ? "Выберите страну" : `${countries.find(country => country.id == value)?.value}`}</Button>
+                        <Button variant="outline" className='w-full' onClick={() => fetchCountries()}>{!value ? "Выберите страну" : `${countries.find(country => country.id == value)?.value}`}</Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent className="w-56">
                         <DropdownMenuLabel>Список стран</DropdownMenuLabel>

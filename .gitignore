@@ -9,6 +9,8 @@
 /nginx
 postgres
 nginx
+homebrew
+/homebrew
 
 # testing
 /coverage

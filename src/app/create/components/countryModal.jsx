@@ -51,6 +51,7 @@ export const CountryModal = () => {
       const data = await response.json();
       setLoading(false);
       setSuccess(data.success);
+      countryForm.reset();
       setTimeout(() => {
         setSuccess(false);
       }, 3000);

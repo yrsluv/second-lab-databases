@@ -45,11 +45,11 @@ export async function GET(req, res) {
       });
     });
 
-    summarizedStatistics.sort((a, b) => b.События - a.События);
+    ;
 
     return NextResponse.json({
       success: true,
-      data: summarizedStatistics,
+      data: summarizedStatistics.sort((a, b) => a.Страна.localeCompare(b.Страна)),
     });
   } catch (error) {
     console.log(error);

@@ -98,6 +98,9 @@ export const ObservatoryModal = () => {
             setLoading(false);
             console.log(data)
             setSuccess(data.success);
+            observatoryForm.reset();
+            setPickedCountry(null);
+            setDate(null);
             setTimeout(() => {
                 setSuccess(false);
             }, 3000);

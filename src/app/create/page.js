@@ -116,6 +116,7 @@ export default function Observations() {
       setPickedObservatory(null)
       setSelectedTitle(null)
       setDate(null)
+      form.reset();
       setTimeout(() => {
         setSuccess(false);
       }, 3000);
@@ -225,7 +226,7 @@ export default function Observations() {
           </p>
           <Autocomplete
             className="w-72 text-slate-100"
-            options={titles}
+            options={[...titles, selectedTitle]}
             value={selectedTitle}
             onInputChange={(event, newValue) => {
               console.log(newValue)
@@ -310,7 +311,7 @@ export default function Observations() {
               Загрузка
             </p> : (<DropdownMenu modal={false}>
               <DropdownMenuTrigger asChild>
-                <Button className="w-72" variant="outline">{!pickedAstronomer ? "Выберите астронома" : `${astronomers.find(astronomer => astronomer.id == pickedAstronomer)?.name}`}</Button>
+                <Button className="w-72" variant="outline" onClick={() => fetchAstronomers()}>{!pickedAstronomer ? "Выберите астронома" : `${astronomers.find(astronomer => astronomer.id == pickedAstronomer)?.name}`}</Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent className="w-72">
                 <DropdownMenuLabel>Список астрономов</DropdownMenuLabel>
@@ -337,7 +338,7 @@ export default function Observations() {
               Загрузка
             </p> : (<DropdownMenu modal={false}>
               <DropdownMenuTrigger asChild>
-                <Button className="w-72" variant="outline">{!pickedObservatory ? "Выберите обсерваторию" : `${observatories.find(observatory => observatory.id == pickedObservatory)?.name}`}</Button>
+                <Button className="w-72" variant="outline" onClick={() => fetchObservatories()}>{!pickedObservatory ? "Выберите обсерваторию" : `${observatories.find(observatory => observatory.id == pickedObservatory)?.name}`}</Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent className="w-72">
                 <DropdownMenuLabel>Список обсерваториев</DropdownMenuLabel>

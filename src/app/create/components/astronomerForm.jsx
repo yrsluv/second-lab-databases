@@ -72,6 +72,9 @@ export const AstronomerForm = () => {
             }
             const data = await resp.json();
             setSuccess(data.success);
+            form.reset();
+            setPickedCountry(null);
+            setDate(null);
             setTimeout(() => {
                 setSuccess(false);
             }, 3000);
