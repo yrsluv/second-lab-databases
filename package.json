@@ -11,6 +11,7 @@
     "prisma": "prisma generate"
   },
   "dependencies": {
+    "@daniel-szulc/react-weather-widget": "^1.0.1",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
     "@hookform/resolvers": "^3.4.2",

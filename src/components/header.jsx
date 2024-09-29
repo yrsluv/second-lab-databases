@@ -50,6 +50,16 @@ export const Header = () => {
                         Статистика
                     </NavigationMenuLink>
                 </Link></NavigationMenuItem>
+                <NavigationMenuItem> <Link href="/today" legacyBehavior passHref>
+                    <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                        Космос сегодня
+                    </NavigationMenuLink>
+                </Link></NavigationMenuItem>
+                   <NavigationMenuItem> <Link href="/widgets" legacyBehavior passHref>
+                    <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                        Виджеты
+                    </NavigationMenuLink>
+                </Link></NavigationMenuItem>
             </NavigationMenuList>
         </NavigationMenu>
     );
