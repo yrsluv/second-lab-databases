@@ -8,6 +8,10 @@ export const metadata = {
   icons: {
     icon: '/favicon.png',
   },
+    verification: {
+    yandex: '418b93215666d3f4',
+  },
+
 };
 
 export default function RootLayout({ children }) {
