@@ -103,11 +103,11 @@ export default function Statistics() {
 
 
   return (
-    <div className='w-full flex items-center justify-center flex-col'>
+    <div className='w-full flex items-center justify-center flex-col  flex-auto'>
       <h2 className="scroll-m-20 w-6/12 text-center mt-12  pb-8 text-3xl font-semibold tracking-tight">
         Поиск Обсерваторий по атрибуту "число рабочих"</h2>
 
-      <Form {...form}>
+      <Form {...form} id='form'>
         <p className="leading-7 mb-6">        Введите желаемое значение диапозона рабочих для поиска:
         </p>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 ">
@@ -143,7 +143,7 @@ export default function Statistics() {
 
           </div>
 
-          <Button type="submit">Поиск</Button>
+          <Button type="submit" aria-controls="form">Поиск</Button>
         </form>
       </Form>
       {

@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center gap-8 p-24 pt-12">
+    <main className="flex min-h-screen flex-col items-center gap-8 p-24 pt-12 flex-auto">
       <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl mb-8">
         Астрономическая картинка дня
       </h1>

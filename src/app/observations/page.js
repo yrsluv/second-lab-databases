@@ -126,11 +126,11 @@ export default function Observations() {
   }, [])
 
   return (
-    <div className='w-full flex items-center justify-center flex-col'>
+    <div className='w-full flex items-center justify-center flex-col flex-auto'>
       <h2 className="scroll-m-20 w-8/12 text-center mt-12  pb-8 text-3xl font-semibold tracking-tight">
         Поиск Астрономических наблюдений по двум атрибутам: "год наблюдения" и "страна Астронома"</h2>
 
-      <Form {...form}>
+      <Form {...form} id='form'>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 flex flex-col items-center">
           {
             !countries ? <p className="leading-7 mb-6">
@@ -193,7 +193,7 @@ export default function Observations() {
 
 
 
-          <Button type="submit" className='w-6/12'>Поиск</Button>
+          <Button type="submit" aria-controls="form" className='w-6/12'>Поиск</Button>
         </form>
       </Form>
       {

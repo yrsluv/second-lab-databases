@@ -169,7 +169,7 @@ export default function Observations() {
   }, [])
 
   return (
-    <div className='w-full flex items-center justify-center flex-col'>
+    <div className='w-full flex items-center justify-center flex-col flex-auto'>
       <h2 className="scroll-m-20 w-8/12 text-center mt-12  pb-8 text-3xl font-semibold tracking-tight">
         Добавлениие новых Астрономических наблюдений</h2>
       <div className="flex flex-col gap-4">

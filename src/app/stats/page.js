@@ -45,7 +45,7 @@ export default function Statistics() {
   }
 
   return (
-    <div className='w-full flex items-center justify-center flex-col'>
+    <div className='w-full flex items-center justify-center flex-col flex-auto'>
       <h2 className="scroll-m-20 w-6/12 text-center mt-12 border-b pb-8 text-3xl font-semibold tracking-tight">
         Статистика астрономический наблюдений    </h2>
       <Table className='w-6/12'>
