@@ -5,7 +5,6 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center gap-8 p-24 pt-12">
    
-      <YandexSearch />
       <div className="scroll-m-20 text-xl font-semibold tracking-tight w-6/12">
         Используемые технологии:
         <ul className="my-6 ml-6 mb-0 list-disc [&>li]:mt-2">

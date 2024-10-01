@@ -15,13 +15,14 @@ import Link from "next/link";
 import React from "react";
 import { cn } from "@/lib/utils"
 import Script from "next/script";
+import YandexSearch from "./YandexSearch";
 
 
 export const Header = () => {
     return (
-       <div className="flex flex-col">
+       <div className="flex flex-col items-center">
         <p className="text-center text-4xl font-bold pt-4">Астрономические наблюдения</p>
-         <NavigationMenu className='mt-2 max-h-max'>
+         <NavigationMenu className='mt-2 max-h-max' id='nav'>
             <NavigationMenuList>
                 <NavigationMenuItem>
                     <Link href="/" legacyBehavior passHref>
@@ -36,7 +37,7 @@ export const Header = () => {
                     </Link> */}
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                    <NavigationMenuTrigger>База данных</NavigationMenuTrigger>
+                    <NavigationMenuTrigger aria-controls="nav">База данных</NavigationMenuTrigger>
                     <NavigationMenuContent>
                         <ul className="flex flex-col gap-3 p-6 md:w-[400px] lg:w-[500px] ">
                             <ListItem href="/create" title="Добавление наблюдений"></ListItem>
@@ -75,6 +76,8 @@ export const Header = () => {
                 </Link></NavigationMenuItem>
             </NavigationMenuList>
         </NavigationMenu>
+        <YandexSearch />
+
        </div>
     );
 };
