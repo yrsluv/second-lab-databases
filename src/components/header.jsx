@@ -57,6 +57,31 @@ export const Header = () => {
                         Астрономическая картинка дня
                     </NavigationMenuLink>
                 </Link></NavigationMenuItem>
+                <NavigationMenuItem> <Link href="/galaxies" legacyBehavior passHref>
+                    <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                        Галактики
+                    </NavigationMenuLink>
+                </Link></NavigationMenuItem>
+                <NavigationMenuItem> <Link href="/planets" legacyBehavior passHref>
+                    <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                        Планеты
+                    </NavigationMenuLink>
+                </Link></NavigationMenuItem>
+                <NavigationMenuItem> <Link href="/stars" legacyBehavior passHref>
+                    <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                        Звёзды
+                    </NavigationMenuLink>
+                </Link></NavigationMenuItem>
+                <NavigationMenuItem> <Link href="/blackholes" legacyBehavior passHref>
+                    <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                        Чёрные дыры
+                    </NavigationMenuLink>
+                </Link></NavigationMenuItem>
+                 <NavigationMenuItem> <Link href="/race" legacyBehavior passHref>
+                    <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                        Космическая гонка
+                    </NavigationMenuLink>
+                </Link></NavigationMenuItem>
                    <NavigationMenuItem> <Link href="/widgets" legacyBehavior passHref>
                     <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                         Виджеты
