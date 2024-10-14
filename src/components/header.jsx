@@ -57,7 +57,22 @@ export const Header = () => {
                         Астрономическая картинка дня
                     </NavigationMenuLink>
                 </Link></NavigationMenuItem> */}
-                <NavigationMenuItem> <Link href="/galaxies" legacyBehavior passHref>
+                 <NavigationMenuItem>
+                    <NavigationMenuTrigger aria-controls="nav">Информация о космосе</NavigationMenuTrigger>
+                    <NavigationMenuContent>
+                        <ul className="flex flex-col gap-3 p-6 md:w-[400px] lg:w-[500px] ">
+                            <ListItem href="/galaxies" title="Галактики"></ListItem>
+                            <ListItem href="/planets" title="Планеты"></ListItem>
+                            <ListItem href="/stars" title="Звёзды"></ListItem>
+                            <ListItem href="/blackholes" title="Чёрные дыры"></ListItem>
+                            <ListItem href="/race" title="Космическая гонка"></ListItem>
+                            <ListItem href="/observatories" title="Обсерватории"></ListItem>
+                            <ListItem href="/telescopes" title="Телескопы"></ListItem>
+                           
+                        </ul>
+                    </NavigationMenuContent>
+                </NavigationMenuItem>
+                {/* <NavigationMenuItem> <Link href="/galaxies" legacyBehavior passHref>
                     <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                         Галактики
                     </NavigationMenuLink>
@@ -94,7 +109,7 @@ export const Header = () => {
                     <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                         Телескопы
                     </NavigationMenuLink>
-                </Link></NavigationMenuItem>
+                </Link></NavigationMenuItem> */}
 
                 <NavigationMenuItem> <Link href="/contacts" legacyBehavior passHref>
                     <NavigationMenuLink className={navigationMenuTriggerStyle()}>
