@@ -22,8 +22,8 @@ export const Header = () => {
     return (
        <div className="flex flex-col items-center">
         <p className="text-center text-4xl font-bold pt-4">Астрономические наблюдения</p>
-         <NavigationMenu className='mt-2 max-h-max' id='nav'>
-            <NavigationMenuList>
+         <NavigationMenu className='mt-2 max-h-max flex flex-wrap' id='nav'>
+            <NavigationMenuList className='flex flex-wrap px-10'>
                 <NavigationMenuItem>
                     <Link href="/" legacyBehavior passHref>
                         <NavigationMenuLink className={navigationMenuTriggerStyle()}>
