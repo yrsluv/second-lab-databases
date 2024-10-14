@@ -52,11 +52,11 @@ export const Header = () => {
                         Статистика
                     </NavigationMenuLink>
                 </Link></NavigationMenuItem> */}
-                <NavigationMenuItem> <Link href="/today" legacyBehavior passHref>
+                {/* <NavigationMenuItem> <Link href="/today" legacyBehavior passHref>
                     <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                         Астрономическая картинка дня
                     </NavigationMenuLink>
-                </Link></NavigationMenuItem>
+                </Link></NavigationMenuItem> */}
                 <NavigationMenuItem> <Link href="/galaxies" legacyBehavior passHref>
                     <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                         Галактики
@@ -82,6 +82,26 @@ export const Header = () => {
                         Космическая гонка
                     </NavigationMenuLink>
                 </Link></NavigationMenuItem>
+
+                <NavigationMenuItem> <Link href="/observatories" legacyBehavior passHref>
+                    <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                        Обсерватории
+                    </NavigationMenuLink>
+                </Link></NavigationMenuItem>
+
+
+                <NavigationMenuItem> <Link href="/telescopes" legacyBehavior passHref>
+                    <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                        Телескопы
+                    </NavigationMenuLink>
+                </Link></NavigationMenuItem>
+
+                <NavigationMenuItem> <Link href="/contacts" legacyBehavior passHref>
+                    <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                       Контакты
+                    </NavigationMenuLink>
+                </Link></NavigationMenuItem>
+
                    <NavigationMenuItem> <Link href="/widgets" legacyBehavior passHref>
                     <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                         Виджеты
