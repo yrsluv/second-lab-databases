@@ -101,3 +101,9 @@ model CoordinateSystem {
   value                 String          @db.VarChar(50)
   events                Event[]
 }
+
+model User {
+  id       Int    @id @default(autoincrement())
+  username String @unique
+  password String
+}

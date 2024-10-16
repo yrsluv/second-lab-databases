@@ -12,13 +12,30 @@ import {
     ListItem
 } from "@/components/ui/navigation-menu"
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { cn } from "@/lib/utils"
 import Script from "next/script";
 import YandexSearch from "./YandexSearch";
 
 
 export const Header = () => {
+
+    const [user, setUser] = useState(typeof localStorage !== 'undefined' ? localStorage?.getItem('user') : '');
+
+    useEffect(() => {
+
+        const onAuth = () => {
+            setUser(localStorage?.getItem('user') ?? '');
+        }
+        window.addEventListener('auth', onAuth)
+
+        return () => window.removeEventListener('auth', onAuth)
+    },[])
+
+    
+
+
+
     return (
        <div className="flex flex-col items-center">
         <p className="text-center text-2xl md:text-4xl font-bold pt-4">Астрономические наблюдения</p>
@@ -134,6 +151,14 @@ export const Header = () => {
                         RSS
                     </NavigationMenuLink>
                 </Link></NavigationMenuItem>
+                <div className="flex gap-2 items-center md:text-sm text-xs !text-[10px] md:!text-[16px] font-bold">
+                    {
+                    user ? <p>{user}</p> : <Link href={'/register'}>Регистрация</Link>
+                }
+                {
+                    user ? <button onClick={() => {localStorage.removeItem('user'); setUser(''); }}>Выход</button> : <Link href={'/login'}>Вход</Link>
+                }
+                </div>
             </NavigationMenuList>
         </NavigationMenu>
         <YandexSearch />
